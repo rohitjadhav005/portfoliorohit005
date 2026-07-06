@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+    scroll-padding-top: 100px;
+  }
+  
+  body {
+    @apply bg-[#050505] text-white font-body antialiased overflow-x-hidden transition-colors duration-500 ease-in-out;
+  }
+  
+  ::selection {
+    @apply bg-[#4facfe]/30 text-white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-br from-[#00f2fe] to-[#4facfe];
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Custom Keyframe Animations used in Hero */
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim-text {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: revealRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes screenPulse {
+  0%, 100% {
+    opacity: 0.02;
+  }
+  50% {
+    opacity: 0.06;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.02);
+  }
+}
+
+@keyframes headBob {
+  0%, 100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(-3deg) translate(-2px, 1px);
+  }
+  50% {
+    transform: rotate(0deg) translate(0, 2px);
+  }
+  75% {
+    transform: rotate(3deg) translate(2px, 1px);
+  }
+}
+
+@keyframes typingLeft {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(3px, -2px);
+  }
+  40% {
+    transform: translate(-2px, -4px);
+  }
+  60% {
+    transform: translate(4px, -1px);
+  }
+  80% {
+    transform: translate(-3px, -3px);
+  }
+}
+
+@keyframes mouseMove {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(5px, -2px);
+  }
+  40% {
+    transform: translate(8px, 4px);
+  }
+  60% {
+    transform: translate(-2px, 5px);
+  }
+  80% {
+    transform: translate(-5px, -1px);
+  }
+}
