@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, TwitterLogo, CheckCircle } from "@phosphor-icons/react";
+import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, CheckCircle } from "@phosphor-icons/react";
 
 const Contact = () => {
   const [buttonText, setButtonText] = useState("Send Message");
@@ -183,7 +183,6 @@ const Contact = () => {
         <div className="flex gap-4 mt-4 md:mt-0">
           <a href="https://github.com/rohitjadhav005" className="hover:text-gray-900 dark:hover:text-white transition-colors"><GithubLogo className="text-xl" /></a>
           <a href="https://www.linkedin.com/in/rohit-jadhav-bba22731a/" className="hover:text-gray-900 dark:hover:text-white transition-colors"><LinkedinLogo className="text-xl" /></a>
-          
         </div>
       </div>
     </section>
