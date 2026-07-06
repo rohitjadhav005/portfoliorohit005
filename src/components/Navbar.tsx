@@ -20,16 +20,17 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full py-6 z-50 transition-all duration-300 ${isScrolled
-            ? "py-4 bg-white/85 dark:bg-[#050505]/85 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            : ""
-          }`}
+        className={`fixed top-0 w-full py-4 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "bg-white/70 dark:bg-[#050505]/70 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none"
+        }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center">
             <a
               href="#home"
-              className="font-outfit text-xl font-bold text-gray-900 dark:text-white no-underline tracking-[-0.5px] flex items-center gap-2"
+              className="font-outfit font-bold text-2xl tracking-tighter text-gray-900 dark:text-white flex items-center gap-2"
             >
               Rohit Jadhav{" "}
             </a>
@@ -37,19 +38,19 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
           <div className="hidden md:flex gap-8">
             <a
               href="#about"
-              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-white"
+              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               About
             </a>
             <a
               href="#projects"
-              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-white"
+              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               Projects
             </a>
             <a
               href="#contact"
-              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-white"
+              className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               Contact
             </a>
@@ -66,7 +67,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 bg-gray-900 dark:bg-white text-white dark:text-[#050505] px-4 py-2 rounded-[20px] text-sm font-semibold transition-all duration-300 hover:bg-gray-700 dark:hover:bg-gray-300 hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_4px_12px_rgba(255,255,255,0.1)]"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold font-outfit text-sm transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
             >
               Resume <i className="ph ph-download-simple"></i>
             </a>

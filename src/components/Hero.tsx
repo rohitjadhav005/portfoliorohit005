@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 
 const itemVariants: Variants = {
@@ -21,21 +20,9 @@ const svgVariants: Variants = {
 };
 
 const Hero = () => {
-  const text = "Available for opportunities";
-  const [displayText, setDisplayText] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      setDisplayText(text.slice(0, i));
-      if (i >= text.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center relative pt-16 md:pt-20 overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center relative pt-14 md:pt-20 overflow-hidden">
       {/* Massive Outline Background Text */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.9, y: "-50%", x: "-50%" }}
@@ -51,34 +38,35 @@ const Hero = () => {
       <motion.div 
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } } }}
-        className="max-w-[1200px] mx-auto px-6 w-full flex flex-col md:flex-row items-center gap-12 z-10"
+        className="max-w-[1200px] mx-auto px-5 w-full flex flex-col md:flex-row items-center gap-5 md:gap-12 z-10 py-4 md:py-0"
       >
         <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left">
           <motion.div variants={itemVariants} className="w-full flex justify-center md:justify-start mb-4 md:mb-6">
-            <span className="font-serif text-sm md:text-base text-[#00f2fe] font-normal tracking-[0.2em] italic flex items-center h-6">
-              {displayText}
-              <span className="inline-block w-2 h-2 rounded-full bg-[#00f2fe] ml-2 animate-[blink_1s_infinite]"></span>
-            </span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+              <span className="text-[9px] md:text-[10px] font-semibold text-gray-900 dark:text-white tracking-wider uppercase">
+                Available for opportunities
+              </span>
+            </div>
           </motion.div>
           
-          <motion.h1 variants={itemVariants} className="font-outfit text-5xl md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-6 text-gray-900 dark:text-white">
+          <motion.h1 variants={itemVariants} className="font-outfit text-[2.4rem] sm:text-5xl md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-3 md:mb-6 text-gray-900 dark:text-white">
             AI & DATA
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#00f2fe] to-[#4facfe]">
+            <span>
               ENGINEER
             </span>
           </motion.h1>
           
-          <motion.p variants={itemVariants} className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-[500px] mb-10 leading-relaxed font-light">
+          <motion.p variants={itemVariants} className="text-gray-600 dark:text-gray-400 text-sm sm:text-base md:text-xl max-w-[500px] mb-5 md:mb-10 leading-relaxed font-light">
             Building intelligent, scalable systems at the intersection of Machine Learning and Full-Stack Engineering.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex flex-row flex-wrap justify-center md:justify-start gap-4 mt-2 md:mt-0">
+          <motion.div variants={itemVariants} className="flex flex-row flex-nowrap justify-center md:justify-start gap-3 mt-0 md:mt-0">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold bg-gray-900 dark:bg-white text-white dark:text-[#050505] transition-transform hover:scale-105 no-underline overflow-hidden group shadow-[0_4px_14px_0_rgba(0,0,0,0.1)]"
+              className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full font-semibold bg-gray-900 dark:bg-white text-white dark:text-[#050505] transition-transform hover:scale-105 no-underline overflow-hidden group shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] text-sm sm:text-base whitespace-nowrap"
             >
               <span className="flex items-center gap-2">
                 Explore Work <i className="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -88,7 +76,7 @@ const Hero = () => {
               href="https://github.com/rohitjadhav005"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold bg-transparent text-gray-900 dark:text-white border border-gray-900/20 dark:border-white/20 transition-all hover:bg-gray-900/5 dark:hover:bg-white/10 hover:border-gray-900/40 dark:hover:border-white/40 no-underline overflow-hidden"
+              className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full font-semibold bg-transparent text-gray-900 dark:text-white border border-gray-900/20 dark:border-white/20 transition-all hover:bg-gray-900/5 dark:hover:bg-white/10 hover:border-gray-900/40 dark:hover:border-white/40 no-underline overflow-hidden text-sm sm:text-base whitespace-nowrap"
             >
               <span className="flex items-center gap-2">
                 <i className="ph ph-github-logo text-xl"></i> GitHub
@@ -97,9 +85,9 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        <motion.div variants={svgVariants} className="flex-1 w-full max-w-[580px]">
-          {/* Cartoon Developer Animation SVG - Kept original SVG for animation fidelity */}
-          <div className="relative w-full aspect-[58/48]">
+        <motion.div variants={svgVariants} className="flex-1 w-full max-w-[340px] sm:max-w-[480px] md:max-w-[580px] mx-auto md:mx-0">
+          {/* Cartoon Developer Animation SVG */}
+          <div className="relative w-full aspect-[58/48] max-h-[220px] sm:max-h-[300px] md:max-h-none">
             {/* SVG Content from index.html line 98 to 376 will be placed here.
                 Due to size, I am wrapping it in a dedicated SVG block */}
             <svg className="w-full h-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" viewBox="0 0 580 480" xmlns="http://www.w3.org/2000/svg">
@@ -212,7 +200,8 @@ const Hero = () => {
               <rect x="40" y="312" width="16" height="82" rx="4" fill="#08111f" />
               <rect x="524" y="312" width="16" height="82" rx="4" fill="#08111f" />
 
-              {/* DESK ACCESSORIES */}
+              <g className="grayscale">
+                {/* DESK ACCESSORIES */}
               <ellipse cx="80" cy="267" rx="14" ry="18" fill="#0f1318" />
               <ellipse cx="80" cy="270" rx="9" ry="13" fill="#e8e8e8" />
               <circle cx="80" cy="248" r="12" fill="#0f1318" />
@@ -279,11 +268,12 @@ const Hero = () => {
               <path d="M360 418 L374 456" stroke="#08111f" strokeWidth="10" strokeLinecap="round" />
               <path d="M360 418 L346 456" stroke="#08111f" strokeWidth="10" strokeLinecap="round" />
               <rect x="202" y="452" width="176" height="8" rx="4" fill="#08111f" />
+              </g>
 
               {/* CHARACTER */}
               <g className="animate-[typingLeft_2s_infinite]">
-                  <path d="M234 362 C220 342 210 318 210 281" fill="none" stroke="#fcd07a" strokeWidth="26" strokeLinecap="round" />
-                  <ellipse cx="210" cy="279" rx="15" ry="10" fill="#fcd07a" />
+                  <path d="M234 362 C220 342 210 318 210 281" fill="none" className="stroke-[#ffe0bd] dark:stroke-[#fcd07a]" strokeWidth="26" strokeLinecap="round" />
+                  <ellipse cx="210" cy="279" rx="15" ry="10" className="fill-[#ffe0bd] dark:fill-[#fcd07a]" />
               </g>
               <g className="animate-[mouseMove_3s_infinite_ease-in-out]">
                   {/* Mouse */}
@@ -291,15 +281,15 @@ const Hero = () => {
                   <line x1="415" y1="270" x2="415" y2="290" stroke="#1a2e50" strokeWidth="1.5" />
                   <rect x="410" y="274" width="10" height="7" rx="3" fill="#1a2e50" />
                   {/* Right Hand on Mouse */}
-                  <path d="M346 362 C370 342 400 318 415 288" fill="none" stroke="#fcd07a" strokeWidth="26" strokeLinecap="round" />
-                  <ellipse cx="415" cy="288" rx="15" ry="10" fill="#fcd07a" />
+                  <path d="M346 362 C370 342 400 318 415 288" fill="none" className="stroke-[#ffe0bd] dark:stroke-[#fcd07a]" strokeWidth="26" strokeLinecap="round" />
+                  <ellipse cx="415" cy="288" rx="15" ry="10" className="fill-[#ffe0bd] dark:fill-[#fcd07a]" />
               </g>
               <path d="M212 415 L210 346 Q212 314 244 308 L336 308 Q368 314 370 346 L368 415 Z" fill="#1f2937" className="animate-[breathe_4s_infinite_ease-in-out]" />
               <path d="M258 309 Q290 300 322 309" fill="#111827" stroke="#111827" strokeWidth="2" className="animate-[breathe_4s_infinite_ease-in-out]" />
               
-              <rect x="274" y="290" width="32" height="22" rx="9" fill="#fcd07a" className="animate-[breathe_4s_infinite_ease-in-out]" />
+              <rect x="274" y="290" width="32" height="22" rx="9" className="fill-[#ffe0bd] dark:fill-[#fcd07a] animate-[breathe_4s_infinite_ease-in-out]" />
               <g className="origin-[290px_258px] animate-[headBob_6s_infinite_ease-in-out]">
-                  <circle cx="290" cy="256" r="58" fill="#fcd07a" />
+                  <circle cx="290" cy="256" r="58" className="fill-[#ffe0bd] dark:fill-[#fcd07a]" />
                   <ellipse cx="290" cy="218" rx="52" ry="28" fill="#6b3e1a" />
                   <path d="M234 260 Q232 206 290 200 Q348 206 346 260 Q340 208 290 206 Q240 208 234 260 Z" fill="#6b3e1a" />
                   <path d="M234 256 Q228 272 232 286" fill="none" stroke="#6b3e1a" strokeWidth="14" strokeLinecap="round" />
@@ -308,10 +298,10 @@ const Hero = () => {
                   <path d="M343 238 Q347 248 346 260" fill="none" stroke="#6b3e1a" strokeWidth="16" strokeLinecap="round" />
                   <path d="M262 208 Q290 203 318 211" fill="none" stroke="#8a5028" strokeWidth="4" strokeLinecap="round" />
                   <path d="M276 202 Q290 195 304 203" fill="none" stroke="#7a4520" strokeWidth="5" strokeLinecap="round" />
-                  <ellipse cx="232" cy="262" rx="10" ry="13" fill="#f0b040" />
-                  <ellipse cx="348" cy="262" rx="10" ry="13" fill="#f0b040" />
-                  <ellipse cx="232" cy="262" rx="6" ry="9" fill="#d99020" />
-                  <ellipse cx="348" cy="262" rx="6" ry="9" fill="#d99020" />
+                  <ellipse cx="232" cy="262" rx="10" ry="13" className="fill-[#ffcca8] dark:fill-[#f0b040]" />
+                  <ellipse cx="348" cy="262" rx="10" ry="13" className="fill-[#ffcca8] dark:fill-[#f0b040]" />
+                  <ellipse cx="232" cy="262" rx="6" ry="9" className="fill-[#f5b380] dark:fill-[#d99020]" />
+                  <ellipse cx="348" cy="262" rx="6" ry="9" className="fill-[#f5b380] dark:fill-[#d99020]" />
               </g>
 
 

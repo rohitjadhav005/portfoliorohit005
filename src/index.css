@@ -10,8 +10,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
     scroll-padding-top: 100px;
+    /* Hide native cursor so our custom cursor renders cleanly.
+       On touch/mobile the custom cursor stays opacity:0 via JS,
+       so native touch highlight/ripple is unaffected. */
+    cursor: none;
   }
   
   body {
@@ -19,13 +22,13 @@
   }
   
   ::selection {
-    @apply bg-[#4facfe]/30 text-white;
+    @apply bg-gray-900 text-white dark:bg-white dark:text-gray-900;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-[#00f2fe] to-[#4facfe];
+    @apply text-gray-900 dark:text-white;
   }
   .perspective-1000 {
     perspective: 1000px;

@@ -32,7 +32,7 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-500 ease-in-out min-h-screen font-body overflow-x-hidden">
+    <div className="bg-[#fff0e5] dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-500 ease-in-out min-h-screen font-body overflow-x-hidden">
       <Cursor isDark={isDark} />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main>
