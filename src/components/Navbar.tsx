@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Sun, Moon, DownloadSimple, List, X } from "@phosphor-icons/react";
 
 interface NavbarProps {
   isDark: boolean;
@@ -20,11 +21,10 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full py-4 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            : "bg-white/70 dark:bg-[#050505]/70 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none"
-        }`}
+        className={`fixed top-0 w-full py-4 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "bg-white/70 dark:bg-[#050505]/70 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none"
+          }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center">
@@ -61,7 +61,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
               className="w-10 h-10 flex items-center justify-center rounded-full bg-transparent text-gray-900 dark:text-white transition-colors hover:bg-black/5 dark:hover:bg-white/10"
               aria-label="Toggle Theme"
             >
-              {isDark ? <i className="ph ph-sun text-xl"></i> : <i className="ph ph-moon text-xl"></i>}
+              {isDark ? <Sun className="text-xl" /> : <Moon className="text-xl" />}
             </button>
             <a
               href="/resume.pdf"
@@ -69,13 +69,13 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
               rel="noreferrer"
               className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold font-outfit text-sm transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
             >
-              Resume <i className="ph ph-download-simple"></i>
+              Resume <DownloadSimple />
             </a>
             <button
               className="md:hidden bg-transparent border-none text-gray-900 dark:text-white text-2xl"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <i className="ph ph-list"></i>
+              <List />
             </button>
           </div>
         </div>
@@ -83,14 +83,14 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed left-0 w-full h-screen bg-white dark:bg-[#050505] flex flex-col items-center justify-center gap-8 transition-all duration-400 ease-in-out z-[999] ${isMobileMenuOpen ? "top-0" : "-top-full"
+        className={`fixed left-0 w-full h-screen bg-white dark:bg-[#050505] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out z-[999] ${isMobileMenuOpen ? "top-0" : "-top-[100vh]"
           }`}
       >
         <button
           className="absolute top-6 right-6 text-gray-900 dark:text-white text-3xl bg-transparent border-none"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <i className="ph ph-x"></i>
+          <X />
         </button>
         <a
           href="#about"
@@ -127,7 +127,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
           onClick={() => setIsMobileMenuOpen(false)}
           className="mt-6 flex items-center gap-2 font-outfit text-xl font-semibold bg-gray-900 dark:bg-white text-white dark:text-[#050505] px-8 py-3.5 rounded-full no-underline transition-transform active:scale-95"
         >
-          Resume <i className="ph ph-download-simple text-2xl"></i>
+          Resume <DownloadSimple className="text-2xl" />
         </a>
       </div>
     </>
