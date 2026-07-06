@@ -181,8 +181,8 @@ const Contact = () => {
       <div className="mt-10 md:mt-[80px] pt-8 border-t border-black/10 dark:border-white/5 flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto px-6 text-gray-600 dark:text-gray-500 text-sm gap-3 md:gap-0">
         <p>&copy; {new Date().getFullYear()} Rohit Jadhav. All rights reserved.</p>
         <div className="flex gap-4 mt-4 md:mt-0">
-          <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors"><GithubLogo className="text-xl" /></a>
-          <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors"><LinkedinLogo className="text-xl" /></a>
+          <a href="https://github.com/rohitjadhav005" className="hover:text-gray-900 dark:hover:text-white transition-colors"><GithubLogo className="text-xl" /></a>
+          <a href="https://www.linkedin.com/in/rohit-jadhav-bba22731a/" className="hover:text-gray-900 dark:hover:text-white transition-colors"><LinkedinLogo className="text-xl" /></a>
           <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors"><TwitterLogo className="text-xl" /></a>
         </div>
       </div>
