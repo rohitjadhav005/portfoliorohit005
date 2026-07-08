@@ -65,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <section ref={containerRef} id="contact" className="py-12 md:py-[120px] relative overflow-hidden perspective-2000">
+    <section ref={containerRef} id="contact" className="py-12 md:py-[120px] relative perspective-2000">
       {/* Background Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1200px] pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-black/5 dark:bg-white/5 rounded-full blur-[100px]"></div>
