@@ -74,6 +74,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
             <button
               className="md:hidden bg-transparent border-none text-gray-900 dark:text-white text-2xl"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Mobile Menu"
             >
               <List />
             </button>
@@ -89,6 +90,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
         <button
           className="absolute top-6 right-6 text-gray-900 dark:text-white text-3xl bg-transparent border-none"
           onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close Mobile Menu"
         >
           <X />
         </button>

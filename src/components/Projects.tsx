@@ -55,7 +55,7 @@ const Projects = () => {
               transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
             >
               <div className="rounded-[16px] overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(255,255,255,0.05)] bg-white/50 dark:bg-[#111]">
-                <a href="https://github.com/rohitjadhav005/GeoLet" target="_blank" rel="noreferrer" className="block relative overflow-hidden aspect-video">
+                <a href="https://github.com/rohitjadhav005/GeoLet" target="_blank" rel="noreferrer" className="block relative overflow-hidden aspect-video" aria-label="View GeoLet Project">
                   <img src={geoletImg} alt="GeoLet Dashboard" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                 </a>
               </div>
@@ -106,7 +106,7 @@ const Projects = () => {
               transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
             >
               <div className="rounded-[16px] overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(255,255,255,0.05)] bg-white/50 dark:bg-[#111]">
-                <a href="https://github.com/rohitjadhav005/Vitality-AI" target="_blank" rel="noreferrer" className="block relative overflow-hidden aspect-video">
+                <a href="https://github.com/rohitjadhav005/Vitality-AI" target="_blank" rel="noreferrer" className="block relative overflow-hidden aspect-video" aria-label="View Vitality-AI Project">
                   <img src={vitalityImg} alt="Vitality-AI Dashboard" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                 </a>
               </div>
