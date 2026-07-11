@@ -16,7 +16,6 @@ const Expertise = () => {
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-
   const rotateXRaw = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
   const rotateY1Raw = useTransform(scrollYProgress, [0, 0.5, 1], [-15, 0, 15]);
   const rotateY2Raw = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
