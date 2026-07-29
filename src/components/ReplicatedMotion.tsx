@@ -52,7 +52,7 @@ export const ReplicatedMotion: React.FC = () => {
   const getTransition = () => {
     if (currentIndex <= 0) {
       // First shift from initial (time 0) to first event (time 0.4)
-      return { duration: motionEvents[0].time_sec, ease: "easeInOut" };
+      return { duration: motionEvents[0].time_sec, ease: "easeInOut" as const };
     }
     const current = motionEvents[currentIndex];
     const prev = motionEvents[currentIndex - 1];
@@ -60,7 +60,7 @@ export const ReplicatedMotion: React.FC = () => {
     
     return { 
       duration: duration > 0 ? duration : 0.01, 
-      ease: "easeInOut" 
+      ease: "easeInOut" as const 
     };
   };
 

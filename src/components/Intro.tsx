@@ -20,7 +20,7 @@ const Intro = () => {
       y: 0,
       opacity: 1,
       rotate: 0,
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const }
     }
   };
 
@@ -29,7 +29,7 @@ const Intro = () => {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505] text-[#fff0e5] overflow-hidden"
       exit={{ 
         y: "-100%", 
-        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.3 } 
+        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.3 } 
       }}
     >
       <motion.div
