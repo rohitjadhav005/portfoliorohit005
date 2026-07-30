@@ -10,15 +10,27 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    scroll-padding-top: 80px;
     /* Hide native cursor so our custom cursor renders cleanly.
        On touch/mobile the custom cursor stays opacity:0 via JS,
        so native touch highlight/ripple is unaffected. */
     cursor: none;
+    /* Prevent overscroll glow/bounce competing with Lenis */
+    overscroll-behavior: none;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 70px;
+    }
   }
   
   body {
     @apply bg-[#050505] text-white font-body antialiased overflow-x-hidden transition-colors duration-500 ease-in-out;
+    /* iOS momentum-style feel */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent horizontal overscroll */
+    overscroll-behavior-x: none;
   }
   
   ::selection {
@@ -182,19 +194,31 @@
 }
 
 /* Lenis smooth scroll */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
 
+/* Give scroll-snapped children a gentle ease on mobile */
+@media (max-width: 768px) {
+  .lenis.lenis-smooth {
+    /* Allow native momentum for inner scrollable areas */
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -1,6 +1,21 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon, DownloadSimple, List, X } from "@phosphor-icons/react";
 
+/** Smoothly scroll to a section using Lenis (falls back to native). */
+function scrollTo(id: string, closeMobileMenu?: () => void) {
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    closeMobileMenu?.();
+    const target = document.querySelector(id);
+    if (!target) return;
+    if (window.__lenis) {
+      window.__lenis.scrollTo(target as HTMLElement, { offset: -80, duration: 1.2 });
+    } else {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+}
+
 interface NavbarProps {
   isDark: boolean;
   toggleTheme: (e: React.MouseEvent) => void;
@@ -38,18 +53,21 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
           <div className="hidden md:flex gap-8">
             <a
               href="#about"
+              onClick={scrollTo("#about")}
               className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               About
             </a>
             <a
               href="#projects"
+              onClick={scrollTo("#projects")}
               className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               Projects
             </a>
             <a
               href="#contact"
+              onClick={scrollTo("#contact")}
               className="text-gray-600 dark:text-gray-400 text-[0.95rem] font-medium transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-200"
             >
               Contact
@@ -96,28 +114,28 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
         </button>
         <a
           href="#about"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={scrollTo("#about", () => setIsMobileMenuOpen(false))}
           className="font-outfit text-3xl font-semibold text-gray-900 dark:text-white no-underline"
         >
           About
         </a>
         <a
           href="#projects"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={scrollTo("#projects", () => setIsMobileMenuOpen(false))}
           className="font-outfit text-3xl font-semibold text-gray-900 dark:text-white no-underline"
         >
           Work
         </a>
         <a
           href="#skills"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={scrollTo("#skills", () => setIsMobileMenuOpen(false))}
           className="font-outfit text-3xl font-semibold text-gray-900 dark:text-white no-underline"
         >
           Expertise
         </a>
         <a
           href="#contact"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={scrollTo("#contact", () => setIsMobileMenuOpen(false))}
           className="font-outfit text-3xl font-semibold text-gray-900 dark:text-white no-underline"
         >
           Contact

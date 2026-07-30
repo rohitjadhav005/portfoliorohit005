@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -9,6 +9,13 @@ import Contact from "./components/Contact";
 import Cursor from "./components/Cursor";
 import Intro from "./components/Intro";
 import { AnimatePresence } from "framer-motion";
+
+// Augment Window so TypeScript knows about __lenis
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,24 +47,53 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      touchMultiplier: 2,
-    });
+  const lenisRef = useRef<Lenis | null>(null);
 
+  useEffect(() => {
+    // Detect touch / mobile devices
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    const lenis = new Lenis(
+      isTouchDevice
+        ? {
+            // Mobile: closer to native feel — fast lerp, moderate multiplier
+            lerp: 0.12,
+            duration: 0.9,
+            easing: (t: number) => 1 - Math.pow(1 - t, 4),
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            touchMultiplier: 1.5,
+            wheelMultiplier: 1.0,
+            smoothWheel: true,
+          }
+        : {
+            // Desktop: butter-smooth cinematic ease
+            lerp: 0.07,
+            duration: 1.4,
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            touchMultiplier: 2,
+            wheelMultiplier: 0.9,
+            smoothWheel: true,
+          }
+    );
+
+    lenisRef.current = lenis;
+    window.__lenis = lenis;
+
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
+      window.__lenis = undefined;
     };
   }, []);
 
