@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, CheckCircle } from "@phosphor-icons/react";
 
@@ -9,27 +9,6 @@ const Contact = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
-  
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
-
-  // Scroll animations for paper plane (gliding top-right along its natural angle on desktop)
-  const planeScrollX = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-20, 0, 25]);
-  const planeScrollY = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [18, 0, -22]);
-  const planeScrollRotate = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-10, 0, 12]);
   
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [displayText, setDisplayText] = useState("");
@@ -129,38 +108,11 @@ const Contact = () => {
                 className="relative z-10 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.12)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_15px_40px_rgba(255,255,255,0.25)] transition-shadow flex items-center gap-3 cursor-pointer group"
               >
                 <motion.div
-                  style={{
-                    x: planeScrollX,
-                    y: planeScrollY,
-                    rotate: planeScrollRotate,
-                  }}
-                  className="inline-flex items-center justify-center"
+                  animate={isHovered ? { x: 3, y: -3, rotate: 12 } : { x: 0, y: 0, rotate: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="flex items-center justify-center shrink-0"
                 >
-                  <motion.div
-                    animate={
-                      isHovered
-                        ? {
-                            x: [0, 5, 10, 15, 8, 3, 0],
-                            y: [0, -8, -3, -12, -6, -2, 0],
-                            rotate: [0, 12, -4, 16, -2, 8, 0],
-                            scale: [1, 1.15, 0.92, 1.18, 0.95, 1.1, 1],
-                          }
-                        : {
-                            x: [0, 3, 0, -2, 0],
-                            y: [0, -4, 1, -3, 0],
-                            rotate: [0, 5, -2, 4, 0],
-                            scale: [1, 1.05, 0.97, 1.04, 1],
-                          }
-                    }
-                    transition={
-                      isHovered
-                        ? { duration: 1.3, repeat: Infinity, ease: "easeInOut" }
-                        : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
-                    }
-                    className="flex items-center justify-center"
-                  >
-                    <PaperPlaneTilt weight="bold" className="text-2xl" />
-                  </motion.div>
+                  <PaperPlaneTilt weight="bold" className="text-2xl" />
                 </motion.div>
                 <span>Send me a message</span>
               </motion.button>
@@ -231,18 +183,9 @@ const Contact = () => {
                       className="mt-2 w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all flex items-center justify-center gap-3 cursor-pointer"
                     >
                       <motion.div
-                        animate={
-                          isSubmitHovered
-                            ? {
-                                x: [0, 5, 9, 4, 0],
-                                y: [0, -7, -2, -8, 0],
-                                rotate: [0, 14, -3, 16, 0],
-                                scale: [1, 1.15, 0.94, 1.16, 1],
-                              }
-                            : {}
-                        }
-                        transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
-                        className="inline-flex items-center justify-center"
+                        animate={isSubmitHovered ? { x: 3, y: -3, rotate: 12 } : { x: 0, y: 0, rotate: 0 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="flex items-center justify-center shrink-0"
                       >
                         <PaperPlaneTilt weight="bold" className="text-xl" />
                       </motion.div>
