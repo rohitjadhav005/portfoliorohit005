@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, CheckCircle } from "@phosphor-icons/react";
 
@@ -6,7 +6,21 @@ const Contact = () => {
   const [buttonText, setButtonText] = useState("Send Message");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
+
+  // Scroll animations for paper plane (gliding top-right along its natural angle)
+  const planeScrollX = useTransform(smoothScroll, [0, 0.5, 1], [-20, 0, 25]);
+  const planeScrollY = useTransform(smoothScroll, [0, 0.5, 1], [18, 0, -22]);
+  const planeScrollRotate = useTransform(smoothScroll, [0, 0.5, 1], [-10, 0, 12]);
   
   const isInView = useInView(containerRef, { once: false, margin: "-100px" });
   const [displayText, setDisplayText] = useState("");
@@ -90,19 +104,57 @@ const Contact = () => {
           {!isFormVisible ? (
             <motion.div
               key="button"
-              className="w-full flex justify-center mt-4"
+              className="w-full flex justify-center items-center mt-4 relative"
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               viewport={{ once: true }}
               transition={{ duration: 0.25 }}
             >
-              <button
+              <motion.button
                 onClick={() => setIsFormVisible(true)}
-                className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] hover:scale-105 transition-all flex items-center gap-3"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+                className="relative z-10 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.12)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_15px_40px_rgba(255,255,255,0.25)] transition-shadow flex items-center gap-3 cursor-pointer group"
               >
-                <PaperPlaneTilt className="text-2xl" /> Send me a message
-              </button>
+                <motion.div
+                  style={{
+                    x: planeScrollX,
+                    y: planeScrollY,
+                    rotate: planeScrollRotate,
+                  }}
+                  className="inline-flex items-center justify-center"
+                >
+                  <motion.div
+                    animate={
+                      isHovered
+                        ? {
+                            x: [0, 5, 10, 15, 8, 3, 0],
+                            y: [0, -8, -3, -12, -6, -2, 0],
+                            rotate: [0, 12, -4, 16, -2, 8, 0],
+                            scale: [1, 1.15, 0.92, 1.18, 0.95, 1.1, 1],
+                          }
+                        : {
+                            x: [0, 3, 0, -2, 0],
+                            y: [0, -4, 1, -3, 0],
+                            rotate: [0, 5, -2, 4, 0],
+                            scale: [1, 1.05, 0.97, 1.04, 1],
+                          }
+                    }
+                    transition={
+                      isHovered
+                        ? { duration: 1.3, repeat: Infinity, ease: "easeInOut" }
+                        : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+                    }
+                    className="flex items-center justify-center"
+                  >
+                    <PaperPlaneTilt weight="bold" className="text-2xl" />
+                  </motion.div>
+                </motion.div>
+                <span>Send me a message</span>
+              </motion.button>
             </motion.div>
           ) : (
             <motion.div
@@ -164,9 +216,27 @@ const Contact = () => {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onMouseEnter={() => setIsSubmitHovered(true)}
+                      onMouseLeave={() => setIsSubmitHovered(false)}
                       type="submit"
-                      className="mt-2 w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all"
+                      className="mt-2 w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold font-outfit text-lg py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all flex items-center justify-center gap-3 cursor-pointer"
                     >
+                      <motion.div
+                        animate={
+                          isSubmitHovered
+                            ? {
+                                x: [0, 5, 9, 4, 0],
+                                y: [0, -7, -2, -8, 0],
+                                rotate: [0, 14, -3, 16, 0],
+                                scale: [1, 1.15, 0.94, 1.16, 1],
+                              }
+                            : {}
+                        }
+                        transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+                        className="inline-flex items-center justify-center"
+                      >
+                        <PaperPlaneTilt weight="bold" className="text-xl" />
+                      </motion.div>
                       {buttonText}
                     </motion.button>
                   </form>
