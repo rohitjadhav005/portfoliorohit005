@@ -60,10 +60,10 @@ const About = () => {
     <section ref={sectionRef} id="about" className="py-16 md:py-[120px] relative perspective-1000">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div
-          className="mb-8 md:mb-[60px]"
+          className="mb-8 md:mb-[60px] transform-gpu"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-[2.5rem] md:text-[3rem] font-bold tracking-tight mb-3 font-outfit text-gray-900 dark:text-white">Behind the Code</h2>
@@ -78,9 +78,9 @@ const About = () => {
             style={{ rotateX, rotateY: rotateY1 }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
             whileHover={{ scale: 1.02, rotateY: 2, rotateX: -2, z: 20 }}
-            className="md:col-span-2 relative z-10 preserve-3d backface-hidden bg-white/80 dark:bg-[#191919]/60 backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-colors duration-300 hover:bg-white dark:hover:bg-[#232323]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
+            className="md:col-span-2 relative z-10 preserve-3d backface-hidden transform-gpu bg-white/95 dark:bg-[#191919]/95 md:bg-white/80 md:dark:bg-[#191919]/60 backdrop-blur-sm md:backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-colors duration-300 hover:bg-white dark:hover:bg-[#232323]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
           >
             <i className="ph ph-user-focus text-4xl text-gray-900 dark:text-white mb-6"></i>
             <h3 className="text-2xl font-semibold mb-4 font-outfit text-gray-900 dark:text-white">Who I Am</h3>
@@ -98,9 +98,9 @@ const About = () => {
             style={{ rotateX, rotateY: rotateY2 }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
             whileHover={{ scale: 1.05, rotateY: -5, rotateX: 5, z: 30 }}
-            className="md:col-span-1 relative z-20 preserve-3d backface-hidden bg-black/5 dark:bg-white/5 backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] flex flex-col justify-center items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
+            className="md:col-span-1 relative z-20 preserve-3d backface-hidden transform-gpu bg-black/5 dark:bg-white/5 backdrop-blur-sm md:backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] flex flex-col justify-center items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
           >
             <h2 className="text-[3.5rem] font-bold font-outfit text-gray-900 dark:text-white mb-2">AI</h2>
             <p className="text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-widest">& Data Science<br />Student</p>
@@ -113,9 +113,9 @@ const About = () => {
             style={{ rotateX, rotateY: rotateY1 }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
             whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5, z: 30 }}
-            className="md:col-span-1 relative z-30 preserve-3d backface-hidden bg-black/5 dark:bg-white/5 backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] flex flex-col justify-center items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
+            className="md:col-span-1 relative z-30 preserve-3d backface-hidden transform-gpu bg-black/5 dark:bg-white/5 backdrop-blur-sm md:backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] flex flex-col justify-center items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
           >
             <h2 className="text-[3.5rem] font-bold font-outfit text-gray-900 dark:text-white mb-2">ML</h2>
             <p className="text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-widest">& Full Stack<br />Engineer</p>
@@ -128,9 +128,9 @@ const About = () => {
             style={{ rotateX, rotateY: rotateY2 }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
             whileHover={{ scale: 1.02, rotateY: -2, rotateX: -2, z: 20 }}
-            className="md:col-span-2 relative z-40 preserve-3d backface-hidden bg-white/80 dark:bg-[#191919]/60 backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-colors duration-300 hover:bg-white dark:hover:bg-[#232323]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
+            className="md:col-span-2 relative z-40 preserve-3d backface-hidden transform-gpu bg-white/95 dark:bg-[#191919]/95 md:bg-white/80 md:dark:bg-[#191919]/60 backdrop-blur-sm md:backdrop-blur-md rounded-[24px] p-8 border border-black/10 dark:border-white/10 transition-colors duration-300 hover:bg-white dark:hover:bg-[#232323]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none"
           >
             <i className="ph ph-lightbulb text-4xl text-gray-900 dark:text-white mb-6"></i>
             <h3 className="text-2xl font-semibold mb-4 font-outfit text-gray-900 dark:text-white">My Philosophy</h3>

@@ -31,10 +31,10 @@ const Projects = () => {
     <section ref={containerRef} id="projects" className="py-12 md:py-24 relative bg-gradient-to-b from-transparent via-black/[0.02] dark:via-white/[0.02] to-transparent perspective-2000">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div 
-          className="mb-8 md:mb-[60px]"
+          className="mb-8 md:mb-[60px] transform-gpu"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-[2.5rem] md:text-[3rem] font-bold tracking-tight mb-3 font-outfit text-gray-900 dark:text-white">Featured Work</h2>
@@ -47,11 +47,11 @@ const Projects = () => {
             
             {/* Image (Right side on desktop) */}
             <motion.div 
-              className="md:col-span-7 md:col-start-6 row-start-1 relative z-10 w-full group"
+              className="md:col-span-7 md:col-start-6 row-start-1 relative z-10 w-full group transform-gpu"
               style={{ y: y1 }}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
             >
               <div className="rounded-[16px] overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(255,255,255,0.05)] bg-white/50 dark:bg-[#111]">
@@ -63,17 +63,17 @@ const Projects = () => {
 
             {/* Content (Left side on desktop, overlapping) */}
             <motion.div 
-              className="md:col-span-6 md:col-start-1 row-start-1 relative z-20 pointer-events-none"
+              className="md:col-span-6 md:col-start-1 row-start-1 relative z-20 pointer-events-none transform-gpu"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             >
               <div className="pointer-events-auto text-left">
                 <p className="text-gray-900 dark:text-white font-mono text-xs font-semibold tracking-wider uppercase mb-3 block">Featured Project</p>
                 <h3 className="text-3xl md:text-4xl font-bold font-outfit mb-6 text-gray-900 dark:text-white">GeoLet</h3>
                 
-                <div className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-md p-6 md:p-8 rounded-[16px] border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.05)] mb-6 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed">
+                <div className="bg-white/95 dark:bg-[#111111]/95 md:bg-white/90 md:dark:bg-[#111111]/90 backdrop-blur-sm md:backdrop-blur-md p-6 md:p-8 rounded-[16px] border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.05)] mb-6 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed">
                   A modern, real-time geopolitical dashboard designed to monitor
                   global energy supplies, pipeline statuses, geopolitical conflicts, and market pricing.
                 </div>
@@ -98,11 +98,11 @@ const Projects = () => {
             
             {/* Image (Left side on desktop) */}
             <motion.div 
-              className="md:col-span-7 md:col-start-1 row-start-1 relative z-10 w-full group"
+              className="md:col-span-7 md:col-start-1 row-start-1 relative z-10 w-full group transform-gpu"
               style={{ y: y2 }}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
             >
               <div className="rounded-[16px] overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(255,255,255,0.05)] bg-white/50 dark:bg-[#111]">
@@ -114,17 +114,17 @@ const Projects = () => {
 
             {/* Content (Right side on desktop, overlapping) */}
             <motion.div 
-              className="md:col-span-6 md:col-start-7 row-start-1 relative z-20 pointer-events-none"
+              className="md:col-span-6 md:col-start-7 row-start-1 relative z-20 pointer-events-none transform-gpu"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             >
               <div className="pointer-events-auto md:text-right text-left">
                 <p className="text-gray-900 dark:text-white font-mono text-xs font-semibold tracking-wider uppercase mb-3 block">Featured Project</p>
                 <h3 className="text-3xl md:text-4xl font-bold font-outfit mb-6 text-gray-900 dark:text-white">Vitality-AI</h3>
                 
-                <div className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-md p-6 md:p-8 rounded-[16px] border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.05)] mb-6 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed md:text-right text-left">
+                <div className="bg-white/95 dark:bg-[#111111]/95 md:bg-white/90 md:dark:bg-[#111111]/90 backdrop-blur-sm md:backdrop-blur-md p-6 md:p-8 rounded-[16px] border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.05)] mb-6 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed md:text-right text-left">
                   AI-powered health analytics that predicts your energy and
                   productivity — so you can always be at your best.
                 </div>

@@ -9,6 +9,13 @@ const Cursor = ({ isDark }: CursorProps) => {
   const cursorOutlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if touch device / mobile screen — completely skip listeners on mobile
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+
+    if (isTouchDevice) return;
+
     const dot = cursorDotRef.current;
     const outline = cursorOutlineRef.current;
     if (!dot || !outline) return;

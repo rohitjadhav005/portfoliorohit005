@@ -10,6 +10,15 @@ const Contact = () => {
   const [isSubmitHovered, setIsSubmitHovered] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
   
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -17,12 +26,12 @@ const Contact = () => {
 
   const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
 
-  // Scroll animations for paper plane (gliding top-right along its natural angle)
-  const planeScrollX = useTransform(smoothScroll, [0, 0.5, 1], [-20, 0, 25]);
-  const planeScrollY = useTransform(smoothScroll, [0, 0.5, 1], [18, 0, -22]);
-  const planeScrollRotate = useTransform(smoothScroll, [0, 0.5, 1], [-10, 0, 12]);
+  // Scroll animations for paper plane (gliding top-right along its natural angle on desktop)
+  const planeScrollX = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-20, 0, 25]);
+  const planeScrollY = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [18, 0, -22]);
+  const planeScrollRotate = useTransform(smoothScroll, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-10, 0, 12]);
   
-  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [displayText, setDisplayText] = useState("");
   const text = "Let's Connect";
 
@@ -165,7 +174,7 @@ const Contact = () => {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, type: "spring", bounce: 0.25 }}
             >
-              <div className="bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[24px] p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative">
+              <div className="bg-white/95 dark:bg-[#111111]/95 md:bg-white/80 md:dark:bg-[#111111]/80 backdrop-blur-sm md:backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[24px] p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative transform-gpu">
                 <button 
                   onClick={() => {
                     setIsFormVisible(false);

@@ -11,25 +11,22 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
-    /* Hide native cursor so our custom cursor renders cleanly.
-       On touch/mobile the custom cursor stays opacity:0 via JS,
-       so native touch highlight/ripple is unaffected. */
     cursor: none;
-    /* Prevent overscroll glow/bounce competing with Lenis */
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
   }
 
   @media (max-width: 768px) {
     html {
       scroll-padding-top: 70px;
+      cursor: auto !important;
+      overscroll-behavior-y: auto;
     }
   }
   
   body {
-    @apply bg-[#050505] text-white font-body antialiased overflow-x-hidden transition-colors duration-500 ease-in-out;
-    /* iOS momentum-style feel */
+    @apply bg-[#050505] text-white font-body antialiased;
+    /* iOS native momentum scrolling */
     -webkit-overflow-scrolling: touch;
-    /* Prevent horizontal overscroll */
     overscroll-behavior-x: none;
   }
   

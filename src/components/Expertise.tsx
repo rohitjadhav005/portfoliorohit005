@@ -61,10 +61,10 @@ const Expertise = () => {
     <section ref={sectionRef} id="skills" className="py-12 md:py-24 relative perspective-2000">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div 
-          className="mb-8 md:mb-[60px]"
+          className="mb-8 md:mb-[60px] transform-gpu"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-[2.5rem] md:text-[3rem] font-bold tracking-tight mb-3 font-outfit text-gray-900 dark:text-white">Expertise</h2>
@@ -76,14 +76,14 @@ const Expertise = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Category 1 */}
           <motion.div 
             variants={leftCategoryVariants}
             style={{ rotateX, rotateY: rotateY1 }}
             whileHover={{ scale: 1.02, rotateY: 5, z: 20 }}
-            className="bg-white/80 dark:bg-[#191919]/60 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
+            className="transform-gpu bg-white/95 dark:bg-[#191919]/95 md:bg-white/80 md:dark:bg-[#191919]/60 backdrop-blur-sm md:backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
           >
             <h3 className="text-xl font-semibold font-outfit mb-6 pb-4 border-b border-black/10 dark:border-white/10 text-gray-900 dark:text-white">Data Science &amp; ML</h3>
             <div className="flex flex-wrap gap-3">
@@ -107,7 +107,7 @@ const Expertise = () => {
             variants={centerCategoryVariants}
             style={{ rotateX, rotateY: rotateY2 }}
             whileHover={{ scale: 1.02, rotateY: 5, z: 20 }}
-            className="bg-white/80 dark:bg-[#191919]/60 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
+            className="transform-gpu bg-white/95 dark:bg-[#191919]/95 md:bg-white/80 md:dark:bg-[#191919]/60 backdrop-blur-sm md:backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
           >
             <h3 className="text-xl font-semibold font-outfit mb-6 pb-4 border-b border-black/10 dark:border-white/10 text-gray-900 dark:text-white">Backend &amp; APIs</h3>
             <div className="flex flex-wrap gap-3">
@@ -131,7 +131,7 @@ const Expertise = () => {
             variants={rightCategoryVariants}
             style={{ rotateX, rotateY: rotateY1 }}
             whileHover={{ scale: 1.02, rotateY: 5, z: 20 }}
-            className="bg-white/80 dark:bg-[#191919]/60 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
+            className="transform-gpu bg-white/95 dark:bg-[#191919]/95 md:bg-white/80 md:dark:bg-[#191919]/60 backdrop-blur-sm md:backdrop-blur-md border border-black/10 dark:border-white/10 rounded-[20px] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-xl"
           >
             <h3 className="text-xl font-semibold font-outfit mb-6 pb-4 border-b border-black/10 dark:border-white/10 text-gray-900 dark:text-white">Frontend &amp; Tools</h3>
             <div className="flex flex-wrap gap-3">

@@ -50,35 +50,25 @@ function App() {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Detect touch / mobile devices
+    // Detect touch / mobile devices — let mobile use 100% native GPU-accelerated kinetic scroll
     const isTouchDevice =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
 
-    const lenis = new Lenis(
-      isTouchDevice
-        ? {
-            // Mobile: closer to native feel — fast lerp, moderate multiplier
-            lerp: 0.12,
-            duration: 0.9,
-            easing: (t: number) => 1 - Math.pow(1 - t, 4),
-            orientation: "vertical",
-            gestureOrientation: "vertical",
-            touchMultiplier: 1.5,
-            wheelMultiplier: 1.0,
-            smoothWheel: true,
-          }
-        : {
-            // Desktop: butter-smooth cinematic ease
-            lerp: 0.07,
-            duration: 1.4,
-            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: "vertical",
-            gestureOrientation: "vertical",
-            touchMultiplier: 2,
-            wheelMultiplier: 0.9,
-            smoothWheel: true,
-          }
-    );
+    if (isTouchDevice) {
+      return;
+    }
+
+    const lenis = new Lenis({
+      // Desktop: butter-smooth cinematic ease
+      lerp: 0.07,
+      duration: 1.4,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      wheelMultiplier: 0.9,
+      smoothWheel: true,
+    });
 
     lenisRef.current = lenis;
     window.__lenis = lenis;
@@ -102,7 +92,7 @@ function App() {
   };
 
   return (
-    <div className={`bg-[#fff0e5] dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-500 ease-in-out min-h-screen font-body overflow-x-hidden ${loading ? "h-screen overflow-hidden" : ""}`}>
+    <div className={`bg-[#fff0e5] dark:bg-[#050505] text-gray-900 dark:text-white min-h-screen font-body max-w-[100vw] overflow-x-clip ${loading ? "h-screen overflow-hidden" : ""}`}>
       <AnimatePresence mode="wait">
         {loading && <Intro key="intro" />}
       </AnimatePresence>

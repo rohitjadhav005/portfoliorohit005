@@ -36,9 +36,9 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full py-4 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "bg-white/70 dark:bg-[#050505]/70 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none"
+        className={`fixed top-0 w-full py-4 z-50 transition-colors duration-300 transform-gpu ${isScrolled
+          ? "bg-white/95 dark:bg-[#050505]/95 backdrop-blur-sm md:backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-md"
+          : "bg-white/80 dark:bg-[#050505]/80 md:bg-transparent md:dark:bg-transparent backdrop-blur-xs md:backdrop-blur-none"
           }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
