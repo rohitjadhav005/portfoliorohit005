@@ -55,7 +55,7 @@ const Hero = () => {
           <motion.h1 variants={itemVariants} className="font-outfit text-[2.4rem] sm:text-5xl md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-3 md:mb-6 text-gray-900 dark:text-white">
             AI & DATA
             <br />
-            <span>
+            <span className="text-[#fff0e5] dark:text-[#050505] [-webkit-text-stroke:2px_#111827] dark:[-webkit-text-stroke:2px_#ffffff] md:[-webkit-text-stroke:3px_#111827] md:dark:[-webkit-text-stroke:3px_#ffffff] [paint-order:stroke_fill] [text-shadow:3px_3px_0px_#111827,5px_5px_12px_rgba(0,0,0,0.15)] dark:[text-shadow:3px_3px_0px_#ffffff,5px_5px_15px_rgba(255,255,255,0.25)]">
               ENGINEER
             </span>
           </motion.h1>
