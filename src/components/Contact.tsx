@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, CheckCircle } from "@phosphor-icons/react";
+import { PaperPlaneTilt, X, GithubLogo, LinkedinLogo, CheckCircle, Envelope } from "@phosphor-icons/react";
 
 const Contact = () => {
   const [buttonText, setButtonText] = useState("Send Message");
@@ -202,9 +202,32 @@ const Contact = () => {
       {/* Footer minimal */}
       <div className="mt-10 md:mt-[80px] pt-8 border-t border-black/10 dark:border-white/5 flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto px-6 text-gray-600 dark:text-gray-500 text-sm gap-3 md:gap-0">
         <p>&copy; {new Date().getFullYear()} Rohit Jadhav. All rights reserved.</p>
-        <div className="flex gap-4 mt-4 md:mt-0">
-          <a href="https://github.com/rohitjadhav005" className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="GitHub Profile"><GithubLogo className="text-xl" /></a>
-          <a href="https://www.linkedin.com/in/rohit-jadhav-bba22731a/" className="hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="LinkedIn Profile"><LinkedinLogo className="text-xl" /></a>
+        <div className="flex gap-5 mt-4 md:mt-0 items-center">
+          <a
+            href="https://github.com/rohitjadhav005"
+            target="_blank"
+            rel="noreferrer"
+            className="text-gray-600 dark:text-gray-500 hover:text-[#181717] dark:hover:text-white transition-all duration-300 hover:scale-125 active:scale-95 cursor-pointer"
+            aria-label="GitHub Profile"
+          >
+            <GithubLogo className="text-2xl" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rohit-jadhav-bba22731a/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-gray-600 dark:text-gray-500 hover:text-[#0A66C2] dark:hover:text-[#0A66C2] transition-all duration-300 hover:scale-125 active:scale-95 cursor-pointer"
+            aria-label="LinkedIn Profile"
+          >
+            <LinkedinLogo className="text-2xl" />
+          </a>
+          <a
+            href="mailto:rohitjadhav005.rj@gmail.com"
+            className="text-gray-600 dark:text-gray-500 hover:text-[#EA4335] dark:hover:text-[#EA4335] transition-all duration-300 hover:scale-125 active:scale-95 cursor-pointer"
+            aria-label="Send Email"
+          >
+            <Envelope className="text-2xl" />
+          </a>
         </div>
       </div>
     </section>
