@@ -222,7 +222,7 @@ const Contact = () => {
             <LinkedinLogo className="text-2xl" />
           </a>
           <a
-            href="mailto:rohitjadhav005.rj@gmail.com"
+            href="mailto:rj8169552@gmail.com"
             className="text-gray-600 dark:text-gray-500 hover:text-[#EA4335] dark:hover:text-[#EA4335] transition-all duration-300 hover:scale-125 active:scale-95 cursor-pointer"
             aria-label="Send Email"
           >
