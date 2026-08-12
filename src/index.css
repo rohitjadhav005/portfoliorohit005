@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark, .dark *));
+@variant dark (&:is(.dark, .dark *));
 
 @theme {
   --font-outfit: "Outfit", sans-serif;
@@ -10,10 +10,21 @@
 @layer base {
   html,
   body {
-    @apply bg-[#fff0e5] dark:bg-[#050505] text-gray-900 dark:text-white font-body antialiased;
-    /* iOS native momentum scrolling */
+    background-color: #fff0e5;
+    color: #111827;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: none;
+  }
+
+  html.dark,
+  html.dark body,
+  .dark html,
+  .dark body {
+    background-color: #050505;
+    color: #ffffff;
   }
 
   html {
@@ -30,15 +41,26 @@
       overscroll-behavior-y: auto;
     }
   }
-  
+
   ::selection {
-    @apply bg-gray-900 text-white dark:bg-white dark:text-gray-900;
+    background-color: #111827;
+    color: #ffffff;
+  }
+
+  html.dark ::selection,
+  .dark ::selection {
+    background-color: #ffffff;
+    color: #111827;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply text-gray-900 dark:text-white;
+    color: #111827;
+  }
+  html.dark .text-gradient,
+  .dark .text-gradient {
+    color: #ffffff;
   }
   .perspective-1000 {
     perspective: 1000px;
